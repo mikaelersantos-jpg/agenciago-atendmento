@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFC Auto Escola Lima | Formação de Condutores em Santa Bárbara de Goiás</title>
+    <meta name="description" content="Há mais de 13 anos formando condutores conscientes em Santa Bárbara de Goiás. Aulas teóricas e práticas com instrutores qualificados. Fale conosco.">
+    <link rel="canonical" href="https://www.autoescolalima.com.br/">
+    <meta property="og:title" content="CFC Auto Escola Lima | Formação de Condutores">
+    <meta property="og:description" content="Há mais de 13 anos formando condutores conscientes em Santa Bárbara de Goiás.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://cdn.pixabay.com/photo/2021/12/18/10/52/honda-brio-6874090_1280.jpg">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #1a5cff;
+            --primary-subtle: #eef2ff;
+            --dark-bg: #111827;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --font-heading: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        .logo-box {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* Botões */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0040e0;
+            border-color: #0040e0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(26, 92, 255, 0.3);
+        }
+        .btn-outline-dark {
+            border-width: 2px;
+            font-weight: 600;
+        }
+        .btn-outline-dark:hover { transform: translateY(-2px); }
+
+        /* Hero */
+        .hero-section {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+            min-height: 90vh;
+        }
+        .hero-img-wrapper img {
+            border-radius: 20px;
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/3;
+        }
+
+        /* Cards */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 16px;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        /* Animações leves */
+        @media (prefers-reduced-motion: no-preference) {
+            .fade-in-up {
+                animation: fadeInUp 0.8s ease-out forwards;
+                opacity: 0;
+            }
+            .delay-1 { animation-delay: 0.2s; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Banner cookies */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            z-index: 1050;
+            border-radius: 12px 12px 0 0;
+            animation: slideUp 0.5s ease;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        /* Páginas legais (SPA) */
+        .legal-page {
+            display: none;
+            padding-top: 100px;
+            padding-bottom: 60px;
+            background: #f9fafb;
+            min-height: 100vh;
+        }
+        .legal-page.active { display: block; }
+        .legal-content h2 { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem; }
+        .legal-content p, .legal-content li { color: #4b5563; line-height: 1.7; }
+        .legal-content { background: white; padding: 3rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero-section { padding-top: 100px; text-align: center; }
+            .hero-section .d-flex { justify-content: center; }
+            .display-4 { font-size: 2.5rem; }
+            .legal-content { padding: 1.5rem; }
+        }
+    </style>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DrivingSchool",
+      "name": "CFC Auto Escola Lima",
+      "telephone": "+556239450014",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Praça Jerônimo Bento, 64",
+        "addressLocality": "Santa Bárbara de Goiás",
+        "addressRegion": "GO",
+        "postalCode": "75390-000",
+        "addressCountry": "BR"
+      },
+      "openingHours": "Mo-Fr 08:00-18:00",
+      "priceRange": "$$"
+    }
+    </script>
+</head>
+<body>
+
+<!-- ===================== SITE PRINCIPAL ===================== -->
+<div id="sitePrincipal">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#" onclick="mostrarSite(event)">
+                <div class="logo-box me-2">
+                    <i class="fa-solid fa-car-side"></i>
+                </div>
+                <div class="d-flex flex-column">
+                    <span class="fw-bold lh-1">CFC Lima</span>
+                    <small class="text-muted lh-1" style="font-size: 0.7rem;">Auto Escola</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">Dúvidas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+                <a href="#contato" class="btn btn-primary ms-lg-3 rounded-pill px-4">Agendar Aula</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 fade-in-up">
+                    <span class="badge bg-light text-primary mb-3 border">Há 13 anos em Santa Bárbara</span>
+                    <h1 class="display-4 fw-bold mb-4">Sua jornada para a <span class="text-primary">liberdade</span> começa aqui.</h1>
+                    <p class="lead text-secondary mb-5">Formação de condutores com foco em segurança, paciência e prática real no trânsito. Mais do que uma habilitação, entregamos confiança para você dirigir.</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3">
+                        <a href="#contato" class="btn btn-primary btn-lg rounded-pill px-4">Solicitar Informações</a>
+                        <a href="#servicos" class="btn btn-outline-dark btn-lg rounded-pill px-4">Nossos Serviços</a>
+                    </div>
+                    <div class="mt-5 d-flex align-items-center gap-3 text-muted small justify-content-center justify-content-sm-start">
+                        <i class="fa-solid fa-location-dot text-primary"></i>
+                        <span>Praça Jerônimo Bento, 64 - Centro</span>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in-up delay-1">
+                    <div class="hero-img-wrapper">
+                        <img src="https://cdn.pixabay.com/photo/2021/12/18/10/52/honda-brio-6874090_1280.jpg"
+                             alt="Instrutor da CFC Lima auxiliando aluna durante aula prática de direção"
+                             class="img-fluid rounded-4 shadow-lg"
+                             width="600" height="400"
+                             fetchpriority="high">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Destaques -->
+    <section class="py-5 bg-white border-bottom">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-4">
+                    <div class="d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary rounded-circle mb-3" style="width: 60px; height: 60px; background-color: var(--primary-subtle);">
+                        <i class="fa-solid fa-user-check fa-xl"></i>
+                    </div>
+                    <h5 class="fw-bold">Instrutores Pacientes</h5>
+                    <p class="text-muted small px-3">Aprenda no seu ritmo, sem pressão. Nossa equipe é treinada para acolher e ensinar com clareza.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary rounded-circle mb-3" style="width: 60px; height: 60px; background-color: var(--primary-subtle);">
+                        <i class="fa-solid fa-car fa-xl"></i>
+                    </div>
+                    <h5 class="fw-bold">Frota Moderna</h5>
+                    <p class="text-muted small px-3">Veículos revisados e equipados para proporcionar a melhor experiência de aprendizado.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary rounded-circle mb-3" style="width: 60px; height: 60px; background-color: var(--primary-subtle);">
+                        <i class="fa-solid fa-clock fa-xl"></i>
+                    </div>
+                    <h5 class="fw-bold">Horários Flexíveis</h5>
+                    <p class="text-muted small px-3">Agende suas aulas teóricas e práticas de acordo com a sua rotina.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <img src="https://cdn.pixabay.com/photo/2023/07/09/08/46/honda-brio-8115809_1280.jpg"
+                         alt="Carro da autoescola estacionado em via pública"
+                         class="img-fluid rounded-4 shadow-sm" loading="lazy" width="600" height="400">
+                </div>
+                <div class="col-lg-6">
+                    <h6 class="text-primary fw-bold text-uppercase mb-2">Nossa História</h6>
+                    <h2 class="display-6 fw-bold mb-4">Mais que uma autoescola, uma parceira na sua conquista.</h2>
+                    <p class="text-secondary mb-3">A <strong>CFC Auto Escola Lima</strong> atua em Santa Bárbara de Goiás desde 2013. Sob a liderança de Hilda Silva Lima, construímos uma reputação baseada na transparência e no cuidado individual com cada aluno.</p>
+                    <p class="text-secondary mb-4">Entendemos que tirar a primeira habilitação pode ser um momento de ansiedade. Por isso, nosso método foca não apenas em passar na prova, mas em formar motoristas conscientes e preparados para o dia a dia no trânsito.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fa-solid fa-check-circle text-primary me-2"></i> Atendimento humanizado e personalizado</li>
+                        <li class="mb-2"><i class="fa-solid fa-check-circle text-primary me-2"></i> Foco em direção defensiva e segurança</li>
+                        <li class="mb-2"><i class="fa-solid fa-check-circle text-primary me-2"></i> Suporte completo do início ao fim do processo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">O que oferecemos</h2>
+                <p class="text-muted">Serviços completos para sua formação de condutor.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm card-hover p-4">
+                        <div class="card-body">
+                            <div class="icon-box mb-3 text-primary"><i class="fa-solid fa-id-card fa-2x"></i></div>
+                            <h4 class="card-title fw-bold">Primeira Habilitação</h4>
+                            <p class="card-text text-muted">Todo o processo para a categoria B (carro), incluindo aulas teóricas e práticas com acompanhamento completo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm card-hover p-4">
+                        <div class="card-body">
+                            <div class="icon-box mb-3 text-primary"><i class="fa-solid fa-motorcycle fa-2x"></i></div>
+                            <h4 class="card-title fw-bold">Categoria A (Moto)</h4>
+                            <p class="card-text text-muted">Aprenda a pilotar com segurança. Aulas práticas focadas no equilíbrio e na legislação específica para motociclistas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm card-hover p-4">
+                        <div class="card-body">
+                            <div class="icon-box mb-3 text-primary"><i class="fa-solid fa-rotate-right fa-2x"></i></div>
+                            <h4 class="card-title fw-bold">Aulas de Reciclagem</h4>
+                            <p class="card-text text-muted">Para quem já tem habilitação mas precisa renovar a confiança ou atualizar conhecimentos no trânsito.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold">Perguntas Frequentes</h2>
+                        <p class="text-muted">Tire suas dúvidas antes de começar.</p>
+                    </div>
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Quanto tempo leva para tirar a habilitação?</button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">O prazo varia conforme a disponibilidade do aluno e o agendamento do Detran. Em média, o processo completo (aulas teóricas + práticas + provas) leva de 1 a 2 meses. Podemos te dar uma estimativa mais precisa no momento da matrícula.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Como funcionam as aulas práticas?</button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">As aulas são individuais, com um instrutor ao seu lado o tempo todo. Você aprende em vias tranquilas e depois avança para o trânsito real, sempre respeitando seu ritmo de aprendizado.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Preciso levar documentos para a matrícula?</button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">Sim. Para iniciar o processo, você precisará de RG, CPF, comprovante de residência e uma foto 3x4 recente. Nossa equipe administrativa orientará você sobre todos os passos burocráticos.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">A autoescola oferece aulas aos sábados?</button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">Temos horários específicos que podem incluir sábados pela manhã, dependendo da disponibilidade da agenda. Consulte nossa equipe para verificar os horários disponíveis no momento.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">O que acontece se eu for reprovado na prova?</button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">Se isso ocorrer, nossa equipe pedagógica analisará os pontos de dificuldade e você poderá agendar novas aulas de reforço antes de marcar um novo exame. Estamos aqui para ajudar você a conquistar sua aprovação.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contato -->
+    <section id="contato" class="py-5 bg-primary text-white">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="display-6 fw-bold mb-3">Pronto para começar?</h2>
+                    <p class="lead mb-4 text-white-50">Fale com nossa equipe para tirar dúvidas, verificar valores e agendar sua matrícula.</p>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="d-flex align-items-center gap-3"><i class="fa-solid fa-phone fa-lg"></i><span class="fs-5">(62) 3945-0014</span></div>
+                        <div class="d-flex align-items-center gap-3"><i class="fa-solid fa-envelope fa-lg"></i><span>lumencontabildade@hotmail.com</span></div>
+                        <div class="d-flex align-items-center gap-3"><i class="fa-solid fa-map-pin fa-lg"></i><span>Praça Jerônimo Bento, 64 - Centro, Santa Bárbara de Goiás - GO</span></div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-lg p-4 text-dark">
+                        <h4 class="fw-bold mb-3">Solicite Informações</h4>
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label small fw-bold">Nome Completo</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Seu nome" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefone" class="form-label small fw-bold">WhatsApp / Telefone</label>
+                                <input type="tel" class="form-control" id="telefone" placeholder="(62) 99999-9999" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="interesse" class="form-label small fw-bold">Tenho interesse em:</label>
+                                <select class="form-select" id="interesse">
+                                    <option>Primeira Habilitação (Carro)</option>
+                                    <option>Primeira Habilitação (Moto)</option>
+                                    <option>Reciclagem / Outros</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Enviar pelo WhatsApp</button>
+                            <p class="text-muted small text-center mt-2 mb-0">Ao enviar, você será redirecionado para o WhatsApp da autoescola.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="fw-bold">CFC Auto Escola Lima</h5>
+                    <p class="text-white-50 small mb-1">Hilda Silva Lima</p>
+                    <p class="text-white-50 small mb-1">CNPJ: 17.784.011/0001-02</p>
+                    <p class="text-white-50 small">Santa Bárbara de Goiás - GO</p>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="fw-bold">Links Úteis</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#sobre" class="text-white-50 text-decoration-none">Sobre Nós</a></li>
+                        <li><a href="#servicos" class="text-white-50 text-decoration-none">Serviços</a></li>
+                        <li><a href="#faq" class="text-white-50 text-decoration-none">Dúvidas Frequentes</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="fw-bold">Legal</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" onclick="mostrarLegal('privacidade'); return false;" class="text-white-50 text-decoration-none">Política de Privacidade</a></li>
+                        <li><a href="#" onclick="mostrarLegal('termos'); return false;" class="text-white-50 text-decoration-none">Termos de Uso</a></li>
+                        <li><a href="#" onclick="mostrarLegal('cookies'); return false;" class="text-white-50 text-decoration-none">Política de Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="text-center text-white-50 small">&copy; 2026 CFC Auto Escola Lima. Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- ===================== PÁGINA: POLÍTICA DE PRIVACIDADE ===================== -->
+<div id="page-privacidade" class="legal-page">
+    <div class="container">
+        <a href="#" onclick="mostrarSite(event); return false;" class="btn btn-outline-dark mb-4 rounded-pill"><i class="fa-solid fa-arrow-left me-2"></i>Voltar para o site</a>
+        <div class="legal-content">
+            <h1 class="fw-bold mb-2">Política de Privacidade</h1>
+            <p class="text-muted small">Última atualização: Outubro de 2026</p>
+
+            <p>A <strong>CFC Auto Escola Lima</strong> (Hilda Silva Lima), inscrita no CNPJ <strong>17.784.011/0001-02</strong>, com sede na Praça Jerônimo Bento, 64, Centro, Santa Bárbara de Goiás - GO, CEP 75390-000, valoriza a sua privacidade. Esta política descreve como coletamos, usamos e protegemos seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018).</p>
+
+            <h2>1. Dados Coletados</h2>
+            <p>Coletamos apenas as informações necessárias para a prestação dos serviços de formação de condutores e para o contato comercial:</p>
+            <ul>
+                <li><strong>Dados de Identificação:</strong> Nome, CPF, RG, data de nascimento (para matrícula no Detran).</li>
+                <li><strong>Dados de Contato:</strong> Telefone, WhatsApp, e-mail e endereço.</li>
+                <li><strong>Dados de Navegação:</strong> Endereço IP, tipo de navegador e páginas acessadas (apenas se você aceitar os cookies de análise).</li>
+            </ul>
+
+            <h2>2. Finalidade do Tratamento</h2>
+            <p>Seus dados são utilizados para:</p>
+            <ul>
+                <li>Realizar sua matrícula e registro nos órgãos competentes (Detran-GO).</li>
+                <li>Entrar em contato para tirar dúvidas ou informar sobre o andamento do processo.</li>
+                <li>Enviar comunicações informativas sobre aulas e agendamentos.</li>
+                <li>Cumprir obrigações legais e regulatórias.</li>
+            </ul>
+
+            <h2>3. Compartilhamento de Dados</h2>
+            <p>Seus dados poderão ser compartilhados exclusivamente com:</p>
+            <ul>
+                <li><strong>Detran-GO:</strong> Para fins de registro e agendamento de exames.</li>
+                <li><strong>Prestadores de Serviço:</strong> Ferramentas de envio de mensagens (WhatsApp) ou hospedagem do site, que atuam sob nossas instruções e contratos de confidencialidade.</li>
+            </ul>
+            <p>Não vendemos ou alugamos seus dados para terceiros.</p>
+
+            <h2>4. Armazenamento e Segurança</h2>
+            <p>Armazenamos seus dados pelo tempo necessário para cumprir as finalidades descritas ou conforme exigido por lei (ex.: prazos do Detran). Adotamos medidas técnicas de segurança para proteger seus dados contra acessos não autorizados, perda ou alteração.</p>
+
+            <h2>5. Seus Direitos (Titular)</h2>
+            <p>Você pode, a qualquer momento, solicitar:</p>
+            <ul>
+                <li>Confirmação da existência de tratamento;</li>
+                <li>Acesso aos dados;</li>
+                <li>Correção de dados incompletos ou desatualizados;</li>
+                <li>Anonimização, bloqueio ou eliminação de dados desnecessários;</li>
+                <li>Revogação do consentimento.</li>
+            </ul>
+            <p>Para exercer seus direitos, entre em contato pelo e-mail: <strong>[E-MAIL DE PRIVACIDADE]</strong> ou pelo telefone <strong>(62) 3945-0014</strong>.</p>
+
+            <h2>6. Cookies</h2>
+            <p>Utilizamos cookies para melhorar sua experiência de navegação. Você pode gerenciar suas preferências no banner de cookies exibido no site ou nas configurações do seu navegador. Para mais detalhes, consulte nossa <a href="#" onclick="mostrarLegal('cookies'); return false;">Política de Cookies</a>.</p>
+
+            <h2>7. Contato do Responsável</h2>
+            <p>Para dúvidas, solicitações ou reclamações relacionadas à privacidade, entre em contato:</p>
+            <ul>
+                <li><strong>Empresa:</strong> CFC Auto Escola Lima</li>
+                <li><strong>CNPJ:</strong> 17.784.011/0001-02</li>
+                <li><strong>Endereço:</strong> Praça Jerônimo Bento, 64 - Centro, Santa Bárbara de Goiás - GO, CEP 75390-000</li>
+                <li><strong>E-mail:</strong> [E-MAIL DE PRIVACIDADE]</li>
+                <li><strong>Telefone:</strong> (62) 3945-0014</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== PÁGINA: TERMOS DE USO ===================== -->
+<div id="page-termos" class="legal-page">
+    <div class="container">
+        <a href="#" onclick="mostrarSite(event); return false;" class="btn btn-outline-dark mb-4 rounded-pill"><i class="fa-solid fa-arrow-left me-2"></i>Voltar para o site</a>
+        <div class="legal-content">
+            <h1 class="fw-bold mb-2">Termos de Uso</h1>
+            <p class="text-muted small">Última atualização: Outubro de 2026</p>
+
+            <p>Bem-vindo ao site da <strong>CFC Auto Escola Lima</strong>. Ao acessar e utilizar este site, você concorda com os termos e condições descritos abaixo. Recomendamos a leitura atenta antes de utilizar nossos serviços.</p>
+
+            <h2>1. Identificação</h2>
+            <ul>
+                <li><strong>Empresa:</strong> Hilda Silva Lima - CFC Auto Escola Lima</li>
+                <li><strong>CNPJ:</strong> 17.784.011/0001-02</li>
+                <li><strong>Endereço:</strong> Praça Jerônimo Bento, 64 - Centro, Santa Bárbara de Goiás - GO, CEP 75390-000</li>
+                <li><strong>Telefone:</strong> (62) 3945-0014</li>
+                <li><strong>E-mail:</strong> lumencontabildade@hotmail.com</li>
+            </ul>
+
+            <h2>2. Objeto</h2>
+            <p>Este site tem caráter informativo e institucional, apresentando os serviços de formação de condutores oferecidos pela CFC Auto Escola Lima. As informações aqui publicadas não substituem o contato direto com a autoescola para matrículas, valores e condições específicas.</p>
+
+            <h2>3. Uso do Site</h2>
+            <p>O usuário compromete-se a utilizar o site de forma ética e lícita, não realizando:</p>
+            <ul>
+                <li>Ações que possam danificar, sobrecarregar ou comprometer o funcionamento do site;</li>
+                <li>Tentativas de acesso não autorizado a áreas restritas;</li>
+                <li>Envio de informações falsas pelo formulário de contato.</li>
+            </ul>
+
+            <h2>4. Propriedade Intelectual</h2>
+            <p>Todos os textos, imagens, logotipos e demais conteúdos deste site pertencem à CFC Auto Escola Lima ou são utilizados com licença. É proibida a reprodução sem autorização prévia e por escrito.</p>
+
+            <h2>5. Limitação de Responsabilidade</h2>
+            <p>As informações disponibilizadas neste site são de caráter geral e podem ser atualizadas sem aviso prévio. A CFC Auto Escola Lima não se responsabiliza por decisões tomadas exclusivamente com base no conteúdo aqui publicado, sendo recomendável confirmar dados por telefone ou WhatsApp antes de qualquer contratação.</p>
+
+            <h2>6. Links Externos</h2>
+            <p>Este site pode conter links para páginas de terceiros (como WhatsApp e Google Maps). Não temos controle sobre o conteúdo desses sites e não nos responsabilizamos por suas práticas de privacidade.</p>
+
+            <h2>7. Alterações</h2>
+            <p>A CFC Auto Escola Lima reserva-se o direito de modificar estes Termos de Uso a qualquer momento. Recomendamos consulta periódica.</p>
+
+            <h2>8. Foro</h2>
+            <p>Eventuais disputas serão resolvidas no foro da comarca de Santa Bárbara de Goiás - GO, com renúncia a qualquer outro, por mais privilegiado que seja.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== PÁGINA: POLÍTICA DE COOKIES ===================== -->
+<div id="page-cookies" class="legal-page">
+    <div class="container">
+        <a href="#" onclick="mostrarSite(event); return false;" class="btn btn-outline-dark mb-4 rounded-pill"><i class="fa-solid fa-arrow-left me-2"></i>Voltar para o site</a>
+        <div class="legal-content">
+            <h1 class="fw-bold mb-2">Política de Cookies</h1>
+            <p class="text-muted small">Última atualização: Outubro de 2026</p>
+
+            <p>Este site utiliza cookies para melhorar sua experiência de navegação e, quando autorizado, para fins de análise e marketing. Esta política explica o que são cookies, como os utilizamos e como você pode gerenciá-los.</p>
+
+            <h2>1. O que são Cookies?</h2>
+            <p>Cookies são pequenos arquivos de texto armazenados no seu navegador ou dispositivo quando você visita um site. Eles permitem que o site se lembre das suas preferências e ações por um período de tempo.</p>
+
+            <h2>2. Tipos de Cookies Utilizados</h2>
+            <ul>
+                <li><strong>Cookies Necessários (essenciais):</strong> Garantem o funcionamento básico do site, como segurança e preferências de idioma. Não podem ser desativados.</li>
+                <li><strong>Cookies de Análise (estatísticos):</strong> Ajudam a entender como os visitantes interagem com o site, permitindo melhorias contínuas. Utilizados apenas com seu consentimento.</li>
+                <li><strong>Cookies de Marketing/Publicidade:</strong> Utilizados para medir a eficácia de campanhas e personalizar anúncios. Utilizados apenas com seu consentimento.</li>
+            </ul>
+
+            <h2>3. Gestão de Cookies</h2>
+            <p>Ao acessar o site, você pode aceitar ou recusar os cookies não essenciais por meio do banner de cookies. Você também pode gerenciar suas preferências diretamente no navegador:</p>
+            <ul>
+                <li><strong>Google Chrome:</strong> Configurações > Privacidade e segurança > Cookies</li>
+                <li><strong>Firefox:</strong> Configurações > Privacidade e segurança</li>
+                <li><strong>Safari:</strong> Preferências > Privacidade</li>
+                <li><strong>Microsoft Edge:</strong> Configurações > Cookies e permissões do site</li>
+            </ul>
+            <p>Atenção: a desativação de cookies pode impactar funcionalidades do site.</p>
+
+            <h2>4. Cookies de Terceiros</h2>
+            <p>Eventualmente podemos utilizar ferramentas de terceiros (como Google Analytics 4 e Google Ads) para análise de tráfego e conversões. Esses serviços podem definir cookies próprios, sempre respeitando o consentimento do usuário e a LGPD.</p>
+
+            <h2>5. Consentimento</h2>
+            <p>Cookies não essenciais não são ativados automaticamente. Ao clicar em "Aceitar", você consente com a utilização desses cookies. Ao clicar em "Recusar", apenas os cookies necessários permanecem ativos.</p>
+
+            <h2>6. Contato</h2>
+            <p>Para dúvidas sobre esta Política de Cookies ou sobre seus dados, entre em contato:</p>
+            <ul>
+                <li><strong>Empresa:</strong> CFC Auto Escola Lima</li>
+                <li><strong>CNPJ:</strong> 17.784.011/0001-02</li>
+                <li><strong>E-mail:</strong> [E-MAIL DE PRIVACIDADE]</li>
+                <li><strong>Telefone:</strong> (62) 3945-0014</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== BANNER DE COOKIES ===================== -->
+<div id="cookieBanner" class="cookie-banner shadow-lg p-3" style="display: none;">
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+        <div class="small text-muted">
+            Utilizamos cookies para melhorar sua experiência e, com seu consentimento, para análise e marketing.
+            Saiba mais na <a href="#" onclick="mostrarLegal('cookies'); return false;" class="text-primary">Política de Cookies</a>.
+        </div>
+        <div class="d-flex gap-2 flex-shrink-0">
+            <button class="btn btn-sm btn-outline-secondary" onclick="rejectCookies()">Recusar</button>
+            <button class="btn btn-sm btn-primary" onclick="acceptCookies()">Aceitar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    /* ============ NAVEGAÇÃO SPA ============ */
+    function mostrarLegal(page) {
+        document.getElementById('sitePrincipal').style.display = 'none';
+        document.querySelectorAll('.legal-page').forEach(el => el.classList.remove('active'));
+        const target = document.getElementById('page-' + page);
+        if (target) {
+            target.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    }
+
+    function mostrarSite(event) {
+        if (event) event.preventDefault();
+        document.querySelectorAll('.legal-page').forEach(el => el.classList.remove('active'));
+        document.getElementById('sitePrincipal').style.display = 'block';
+        window.scrollTo(0, 0);
+    }
+
+    /* ============ BANNER DE COOKIES ============ */
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookieBanner').style.display = 'block';
+        }
+    });
+
+    function acceptCookies() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        document.getElementById('cookieBanner').style.display = 'none';
+        // TODO: inicializar GA4/GTM aqui (Consent Mode: granted)
+        console.log('Cookies aceitos. Iniciando rastreamento...');
+    }
+
+    function rejectCookies() {
+        localStorage.setItem('cookieConsent', 'rejected');
+        document.getElementById('cookieBanner').style.display = 'none';
+        // TODO: Consent Mode: denied
+        console.log('Cookies recusados. Rastreamento desativado.');
+    }
+
+    /* ============ FORMULÁRIO WHATSAPP ============ */
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nome = document.getElementById('nome').value.trim();
+        const tel = document.getElementById('telefone').value.trim();
+        const interesse = document.getElementById('interesse').value;
+
+        const texto = `Olá! Meu nome é ${nome}. Tenho interesse em: ${interesse}. Meu telefone é ${tel}. Gostaria de mais informações sobre a autoescola.`;
+        const url = `https://wa.me/556239450014?text=${encodeURIComponent(texto)}`;
+        window.open(url, '_blank');
+    });
+
+    /* ============ NAVBAR SCROLL (suave) ============ */
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('.navbar-custom');
+        if (window.scrollY > 50) {
+            nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+            nav.style.padding = '0.5rem 0';
+        } else {
+            nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.04)';
+            nav.style.padding = '1rem 0';
+        }
+    });
+
+    /* ============ SMOOTH SCROLL PARA ÂNCORAS ============ */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#' || href.startsWith('#page-')) return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                // fecha o menu mobile se estiver aberto
+                const navCollapse = document.getElementById('navbarNav');
+                if (navCollapse && navCollapse.classList.contains('show')) {
+                    new bootstrap.Collapse(navCollapse).hide();
+                }
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
